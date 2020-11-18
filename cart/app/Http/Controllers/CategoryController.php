@@ -18,6 +18,14 @@ class CategoryController extends Controller
 
         ]);
 
-        Return view('insertCategory');// step 5 back to last page
+        return view('insertCategory'); // step 5 back to last page
+    }
+
+    public function show()
+    {
+        $categories = Category::all(); //instead SQL select * from categories
+        
+        return view('showCategory')->with('categories', $categories);
+    
     }
 }
