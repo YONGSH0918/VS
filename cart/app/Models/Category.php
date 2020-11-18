@@ -10,4 +10,10 @@ class Category extends Model
     use HasFactory;
     protected $fillable = ['id', 'name']; //enable user update the field
 
+    public function product(){
+
+        return $this->hasMany('App\Models\Product');
+        //one to many use hasMany
+    }
+
 }

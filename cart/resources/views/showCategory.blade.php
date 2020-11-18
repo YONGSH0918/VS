@@ -394,11 +394,27 @@
         body {
             font-family: 'Nunito';
         }
+
+        table,
+        th,
+        td {
+
+            border: solid black 2px;
+
+        }
+
+        th{
+            height: 40px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
     </style>
 </head>
 
 <body class="antialiased">
-    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0" style="background: lightpink">
+    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0" style="background: lightcyan">
         @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
@@ -416,13 +432,15 @@
         <div>
             <table>
                 <tr>
-                    <td>ID</td>
-                    <td>Name</td>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Action</th>
                 </tr>
                 @foreach($categories as $category)
                 <tr>
                     <td>{{$category->id}}</td>
                     <td>{{$category->name}}</td>
+                    <td><a href="{{ route('deleteCategory', ['id' => $category->id]) }}" class="btn btn-danger" style="color: red;">Delete</a></td>
                 </tr>
                 @endforeach
 
