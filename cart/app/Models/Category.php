@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    use HasFactory;
-    protected $fillable=['name']; //enable user update the field
+    protected $fillable = ['name']; //enable user update the field
+
+    public function product()
+    {
+
+        return $this->hasMany('App\Product');
+    }
 }
