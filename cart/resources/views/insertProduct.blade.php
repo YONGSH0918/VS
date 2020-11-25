@@ -415,7 +415,7 @@
 
         <div>
             <div style="text-align: center;">
-                <form class="subform" method="post" action="{{ route('addCategory') }} " enctype="multipart/form-data">
+                <form class="subform" method="post" action="{{ route('addProduct') }} " enctype="multipart/form-data">
                     @csrf
                     <!-- very important if you didn't insert CSRF, it not allow submit the data-->
                     <p>
