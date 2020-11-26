@@ -5,25 +5,41 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Product;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
+    public function create()
+    {
+        return view('insertProduct')->with('categories', Category::all());
+    }
     //
     public function store()
     {    //step 2 
         $r = request(); //step 3 get data from HTML
-        $addProduct = Product::create([    //step 3 bind data
+        $image = $r->file('product-image');
+        $image->move('images', $image->getClientOriginalName());   //images is the location                
+        $imageName=$image->getClientOriginalName(); 
+
+        $addCategory = Product::create([    //step 3 bind data
             'id' => $r->ID, //add on 
             'name' => $r->name,
             'description' => $r->description,
             'categoryID' => $r->category,
             'price' => $r->price,
             'quantity' => $r->quantity,
-            'image'=> '-',
+            'image'=>$imageName,
             //fullname from HTML
 
         ]);
 
-        return view('insertProduct'); // step 5 back to last page
+        return redirect()->route('showProduct'); // step 5 back to last page
+    }
+
+    public function show()
+    {
+        $products = Product::all(); //instead SQL select * from categories
+
+        return view('showProduct')->with('products', $products);
     }
 }
