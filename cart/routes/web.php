@@ -22,6 +22,10 @@ Route::get('/insertCategory', function () {
     return view('insertCategory');
 });
 
+Route::get('/productsView', function(){
+    return view('/productsView');
+});
+
 Route::get('/contactus', function () {
     return view('contact');
 });
@@ -51,6 +55,3 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
