@@ -46,7 +46,7 @@
 		</table>
 
 		<div class="text-center">
-
+			{{ $products->links() }}
 		</div>
 
 	</div>
