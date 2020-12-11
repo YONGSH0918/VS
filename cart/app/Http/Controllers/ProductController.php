@@ -47,6 +47,12 @@ class ProductController extends Controller
         return view('showProduct')->with('products', $products);
     }
 
+    public function showProducts(){
+        $products=Product::paginate(12);
+        
+        return view('products')->with('products',$products);
+    }
+
     public function edit($id)
     {
 
@@ -56,6 +62,7 @@ class ProductController extends Controller
         return view('editProduct')->with('products', $products)
             ->with('categories', Category::all());
     }
+    
     public function delete($id)
     {
         $products = Product::find($id);

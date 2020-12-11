@@ -23,7 +23,7 @@ class CartController extends Controller
     public function add(){ 
 
         $r=request(); 
-        $addCategory='myCart'::create([    
+        $addCategory= 'myCart'::create([    
             
             'quantity'=>$r->quantity,             
             'orderID'=>'',
