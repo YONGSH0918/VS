@@ -10,7 +10,6 @@ use App\Models\myCart;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
-
 class CartController extends Controller
 {
     //
