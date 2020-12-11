@@ -15,7 +15,7 @@ class OrderController extends Controller
     public function add(){ 
 
         $r=request(); 
-        $addOrder= 'myOrder'::create([    
+        $addOrder= myOrder::create([    
             
             'amount'=>$r->amount,             
             'paymentStatus'=>'pending',                 
@@ -26,7 +26,7 @@ class OrderController extends Controller
         
         $items=$r->input('item');
         foreach($items as $item => $value){
-            $carts ='myCart'::find($value);
+            $carts =myCart::find($value);
             $carts->orderID = $orderID->id;
             $carts->save();
         }
