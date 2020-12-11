@@ -10,6 +10,11 @@ class myCart extends Model
     use HasFactory;
     protected $fillable=['orderID','userID','quantity','productID'];
 
+    public function category(){
+
+        return $this->belongsTo('App\Category');
+        
+    }
     
     public function product(){
 
