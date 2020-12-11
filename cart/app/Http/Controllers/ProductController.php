@@ -43,7 +43,7 @@ class ProductController extends Controller
 
     public function show()
     {
-        $products = Product::paginate(3);
+        $products = Product::paginate(12);
         return view('showProduct')->with('products', $products);
     }
 
@@ -91,11 +91,22 @@ class ProductController extends Controller
             ->select('categories.name as catname', 'categories.id as catid', 'products.*')
             ->where('products.name', 'like', '%' . $keyword . '%')
             ->orWhere('products.description', 'like', '%' . $keyword . '%')
-            ->paginate(3);
+            ->paginate(4);
             //->get()
-
-            return view('showProduct')->with('products', $products);
+                    // select * from products left join categories on 
+                return view('showProduct')->with('products',$products);
     }
+
+    public function showProductDetail($id){
+       
+        $products =Product::all()->where('id',$id);
+        //select * from products where id='$id'
+        
+        return view('productdetail')->with('products',$products)
+                                ->with('categories',Category::all());
+    }
+
+        //-----------shuhui----------------//
 
     public function showProductsView()
     {
