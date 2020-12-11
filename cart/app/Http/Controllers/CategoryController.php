@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
 use App\Models\Category; //step 1  link models //instead with Laravel 8 format
 
 class CategoryController extends Controller

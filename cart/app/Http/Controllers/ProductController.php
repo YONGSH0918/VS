@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Category;
-use Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Pagination\Paginator;
 
 class ProductController extends Controller
@@ -36,7 +36,7 @@ class ProductController extends Controller
 
         ]);
 
-        'Session'::flash('success', "Product create succesful!");
+        Session::flash('success', "Product create succesful!");
 
         return redirect()->route('showProduct'); // step 5 back to last page
     }
@@ -47,10 +47,11 @@ class ProductController extends Controller
         return view('showProduct')->with('products', $products);
     }
 
-    public function showProducts(){
-        $products=Product::paginate(12);
-        
-        return view('products')->with('products',$products);
+    public function showProducts()
+    {
+        $products = Product::paginate(12);
+
+        return view('products')->with('products', $products);
     }
 
     public function edit($id)
@@ -62,7 +63,7 @@ class ProductController extends Controller
         return view('editProduct')->with('products', $products)
             ->with('categories', Category::all());
     }
-    
+
     public function delete($id)
     {
         $products = Product::find($id);
@@ -93,27 +94,28 @@ class ProductController extends Controller
     {
         $r = request(); //retrive submited form data
         $keyword = $r->searchProduct;
-        $products = 'DB'::table('products')
+        $products = DB::table('products')
             ->leftjoin('categories', 'categories.id', '=', 'products.categoryID')
             ->select('categories.name as catname', 'categories.id as catid', 'products.*')
             ->where('products.name', 'like', '%' . $keyword . '%')
             ->orWhere('products.description', 'like', '%' . $keyword . '%')
             ->paginate(4);
-            //->get()
-                    // select * from products left join categories on 
-                return view('showProduct')->with('products',$products);
+        //->get()
+        // select * from products left join categories on 
+        return view('showProduct')->with('products', $products);
     }
 
-    public function showProductDetail($id){
-       
-        $products =Product::all()->where('id',$id);
+    public function showProductDetail($id)
+    {
+
+        $products = Product::all()->where('id', $id);
         //select * from products where id='$id'
-        
-        return view('productdetail')->with('products',$products)
-                                ->with('categories',Category::all());
+
+        return view('productdetail')->with('products', $products)
+            ->with('categories', Category::all());
     }
 
-        //-----------shuhui----------------//
+    //-----------shuhui----------------//
 
     public function showProductsView()
     {
