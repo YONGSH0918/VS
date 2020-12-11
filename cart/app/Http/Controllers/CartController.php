@@ -30,7 +30,7 @@ class CartController extends Controller
             'userID' => Auth::id(),
 
         ]);
-        Session::flash('success', "Product add succesful!");
+        Session::flash('success', "Product add successful!");
         return redirect()->route('products');
     }
 

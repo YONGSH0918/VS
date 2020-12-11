@@ -33,7 +33,7 @@ class OrderController extends Controller
             $carts->save();
         }
 
-        Session::flash('success', "Order succesful!");
+        Session::flash('success', "Order successful!");
         return redirect()->route('show.myCart'); //redirect to payment
 
     }
