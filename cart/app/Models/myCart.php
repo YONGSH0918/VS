@@ -1,35 +1,25 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace App\Models;
 
-class CreateMyCartsTable extends Migration
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class myCart extends Model
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('my_carts', function (Blueprint $table) {
-            $table->id();
-            $table->string('orderID');
-            $table->string('userID');            
-            $table->integer('quantity')->unsigned();
-            $table->string('productID');
-            $table->timestamps();
-        });
+    use HasFactory;
+    protected $fillable=['orderID','userID','quantity','productID'];
+
+    
+    public function product(){
+
+        return $this->belongsTo('App\Product');
+
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('my_carts');
+    public function user(){
+
+        return $this->belongsTo('App\User');
+
     }
 }

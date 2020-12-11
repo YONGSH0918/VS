@@ -1,34 +1,24 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace App\Models;
 
-class CreateMyOrdersTable extends Migration
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class myOrder extends Model
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('my_orders', function (Blueprint $table) {
-            $table->id();
-            $table->string('paymentStatus');
-            $table->string('userID');            
-            $table->integer('amount')->unsigned();
-            $table->timestamps();
-        });
+    use HasFactory;
+    protected $fillable=['userID','amount','paymentStatus'];
+
+    public function product(){
+
+        return $this->hasMany('App\Product');
+
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('my_orders');
+    public function user(){
+
+        return $this->belongsTo('App\User');
+
     }
 }

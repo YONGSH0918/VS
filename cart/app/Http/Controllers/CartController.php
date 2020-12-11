@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\Product; 
 use App\Models\Category;
-use App\Models\myCart;
+use App\User;
+use App\myCart;
 Use Session;
 Use Auth;
 

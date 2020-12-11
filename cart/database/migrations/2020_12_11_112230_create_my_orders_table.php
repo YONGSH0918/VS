@@ -15,6 +15,9 @@ class CreateMyOrdersTable extends Migration
     {
         Schema::create('my_orders', function (Blueprint $table) {
             $table->id();
+            $table->string('paymentStatus');
+            $table->string('userID');            
+            $table->integer('amount')->unsigned();
             $table->timestamps();
         });
     }
