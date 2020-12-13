@@ -58,11 +58,14 @@ Route::get('/myCart', [App\Http\Controllers\CartController::class, 'show'])->nam
 
 Route::get('/showmyCart', [App\Http\Controllers\CartController::class, 'showMyCart'])->name('show.myCart');
 
+Route::get('/deleteCart/{id}', [App\Http\Controllers\CartController::class, 'delete'])->name('deleteCart');
+
 Route::post('/createorder', [App\Http\Controllers\OrderController::class, 'add'])->name('create.order');
 
 //-------shuhui---------//
 
 Route::get('/productsView', [App\Http\Controllers\ProductController::class, 'showProductsView'])->name('productsView');
+
 
 Auth::routes();
 
