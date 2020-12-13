@@ -14,8 +14,8 @@
 		var total = 0;
 
 		var cboxes = document.getElementsByName('item[]');
-		var len = cboxes.length;
-		for (var i = 0; i < len; i++) {
+
+		for (var i = 0; i < cboxes.length; i++) {
 			if (cboxes[i].checked) { //calculate if checked		
 				subtotal = parseFloat(prices[i].value);
 				total += subtotal;
