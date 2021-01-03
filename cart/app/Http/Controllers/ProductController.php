@@ -11,6 +11,13 @@ use Illuminate\Pagination\Paginator;
 
 class ProductController extends Controller
 {
+    public function autocomplete(Request $request)
+    {
+        $data = Product::select("name")
+                ->where("name","LIKE", '%'.$request->get('query').'%')
+                ->get();
+        return response()->json($data);
+    }
 
     public function create()
     {
