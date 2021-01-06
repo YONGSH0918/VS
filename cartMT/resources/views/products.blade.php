@@ -5,15 +5,19 @@
 @section('content')
 
 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/lightslider.css" />
+<!--Jquery-->
+<script type="text/javascript" src="js/JQuery3.3.1.js"></script>
+<script type="text/javascript" src="js/lightslider.js"></script>
 
 <div class="c">
 
-    <ul>
-    @foreach($products as $product)
+    <ul id="autoWidth" class="cs-hidden">
+        @foreach($products as $product)
         <li class="item-a">
-            
+
             <div class="box">
                 <p class="marvel">{{$product->name}}</p>
                 <!--model-->
@@ -27,9 +31,10 @@
             </div>
 
         </li>
-          @endforeach
+        @endforeach
     </ul>
+    
 </div>
 
-
+<script src="js/script.js" type="text/javascript"></script>
 @endsection
