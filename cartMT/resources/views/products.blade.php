@@ -4,14 +4,15 @@
 
 @section('content')
 
-
+<head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" type="text/css" href="css/lightslider.css" />
+<link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('css/lightslider.css') }}" />
 <!--Jquery-->
-<script type="text/javascript" src="js/JQuery3.3.1.js"></script>
-<script type="text/javascript" src="js/lightslider.js"></script>
-
+<script type="text/javascript" src="{{ asset('js/JQuery3.3.1.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/lightslider.js') }}"></script>
+</head>
+<body>
 <div class="c">
 
     <ul id="autoWidth" class="cs-hidden">
@@ -36,5 +37,6 @@
     
 </div>
 
-<script src="js/script.js" type="text/javascript"></script>
+<script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
+</body>
 @endsection

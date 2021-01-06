@@ -1,10 +1,9 @@
-// JavaScript Document
- $(document).ready(function() {
+ $(document).jquery(function() {
     $('#autoWidth').lightSlider({
         autoWidth:true,
         loop:true,
         onSliderLoad: function() {
-            $('#autoWidth').removeClass('cS-hidden');
+            $('#autoWidth').removeClass('cs-hidden');
         } 
     });  
   });
