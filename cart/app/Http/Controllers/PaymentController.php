@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\URL;
-//use Notification;
+use Illuminate\Support\Facades\Notification;
 
 
 class PaymentController extends Controller
@@ -87,7 +87,7 @@ class PaymentController extends Controller
 
             $payment->create($this->_api_context);
 
-        } catch ( \PayPal\Exception\PaypalConnectionException $ex) {
+        } catch (\PayPal\Exception\PaypalConnectionException  $ex) {
 
             if (Config::get('app.debug')) {
 
@@ -159,8 +159,8 @@ class PaymentController extends Controller
 
             Session::put('success', 'Payment success');
             //add update record for cart
-            //$email='yangcheebeng@hotmail.com';
-	        //Notification::route('mail', $email)->notify(new \App\Notifications\orderPaid($email));
+            $email='yvonneyong0918@gmail.com';
+	        Notification::route('mail', $email)->notify(new \App\Notifications\orderPaid($email));
             return Redirect::to('products');  //back to product page
 
         }
